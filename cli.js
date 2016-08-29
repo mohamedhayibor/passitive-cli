@@ -60,7 +60,7 @@ if (input.length == 1 && Object.keys(cli.flags).length == 0) {
 
     setTimeout( function() {
       toClipboard.sync( 'Nothing to copy really - rubish' );
-    }, 5 * 1000);
+    }, 8 * 1000);
 
    console.log(`Your password is already on your clipboard!`);
   } else {
