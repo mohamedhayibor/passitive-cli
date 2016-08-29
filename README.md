@@ -39,7 +39,7 @@ MASTER_KEY="whatever master key, preferably long, annoying to read and personal"
 ```
 
 # Demo
-![](http://g.recordit.co/.gif)
+![](http://g.recordit.co/WUgip0vkkn.gif)
 
 ### Raison D'etre
 Managing passwords is already super hard and still they are one of the best means when it comes to dealing with authentification. But there is a constant dilemma between `ease of use` and security. The advantage is that using a custom encryption/decryption is much more secure than using popular password mangament tools as they attract more attention. 
