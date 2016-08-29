@@ -28,6 +28,7 @@
   "homepage": "https://github.com/BerniceChua/passitive#readme",
   "dependencies": {
     "conf": "^0.11.2",
+    "dotenv": "^2.0.0",
     "jsonfile": "^2.3.1",
     "meow": "^3.7.0",
     "simple-encryptor": "^1.1.0",

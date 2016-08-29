@@ -8,10 +8,19 @@ const jsonfile = require('jsonfile');
 // The store is where our encrypted passwords are permanently stored (persistent).
 const store = new Conf();
 
-// ^^^^^^ For demo purpose only > you would want to put your key in you env variables or any other method to obfuscate it
-var key = 'real secret keys should be long and random. Ours is the most private :)';
+// loading the master key from .env file
+require('dotenv').config();
 
-var encryptor = require('simple-encryptor')( key );
+let MASTER_KEY = process.env.MASTER_KEY;
+
+/*********
+ ^^^^^^ Set up your master key like so:
+ ```
+ export.
+ env variables or any other method to obfuscate it.
+*/
+
+var encryptor = require('simple-encryptor')( MASTER_KEY );
 
 const cli = meow(`
   Usage:
@@ -43,7 +52,7 @@ if (input.length == 1 && Object.keys(cli.flags).length == 0) {
   if ( store.has(account) ) {
     let hashedPassword = store.get(account);
 
-    // making sure that we the decrypted pass is a string
+    // making sure that the decrypted pass is a string
     let plainTextPassword = String( encryptor.decrypt( hashedPassword ) );
 
     // piping the plain password for only 5s
@@ -53,7 +62,6 @@ if (input.length == 1 && Object.keys(cli.flags).length == 0) {
       toClipboard.sync( 'Nothing to copy really - rubish' );
     }, 5 * 1000);
 
-   // toClipboard('Nothing to see really.', function () { } );
    console.log(`Your password is already on your clipboard!`);
   } else {
     // warn user then exit
@@ -65,7 +73,6 @@ if (input.length == 1 && Object.keys(cli.flags).length == 0) {
     process.exit(1);
   }
 }
-
 
 // *************** Logic to encrypt and store the password
 // making sure that this part is only executed with intended number of args
@@ -82,9 +89,7 @@ if (input.length == 2 && Object.keys(cli.flags).length == 0) {
   store.set(account, encryptedPassword);
 
   console.log("encrypted: ", encryptedPassword);
-
 }
-
 
 // ************* Logic to encrypt and store all encrypted passwords from a file
 // The different file processing is handled with flags
@@ -99,17 +104,13 @@ if (input.length == 2 && Object.keys(cli.flags).length == 0) {
 if ( Object.keys(cli.flags).length > 0) {
   let filepath = input[0];
 
-  //  console.log('filepath provided: >', filepath); // prev debug purpose
-
   // logic for a json file
   // In this case we have exampleJson.json as demo file
   if ( cli.flags.j ) {
     console.log('Processing the json file');
     // at this point we'll suppose that the json is in the format
     // key: plain text password
-    let passwordObject = jsonfile.readFileSync( filepath ); // for debugging
-
-    // console.log('passowordObject: >', passwordObject);
+    let passwordObject = jsonfile.readFileSync( filepath );
 
     // acc means account
     for ( let acc in passwordObject) {
@@ -122,10 +123,7 @@ if ( Object.keys(cli.flags).length > 0) {
     console.log('finished encrypting all passwords provided in json file');
   }
 
-  // logic for an excel file > Screw it> abandonned it
-
-  // Extra functionalities for ease of use at the entreprise level
-  // > using .delete() to deleted an account + encrypted
+  // Extra functionalities
   if ( cli.flags.d ) {
     let accountToDelete = input[0];
 

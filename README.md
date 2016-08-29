@@ -5,11 +5,6 @@ This tool first ecrypts then saves it into your local computer. When you want th
 
 ## Usage
 
-On your terminal:
-```sh
-  > ms <site> <query>
-```
-
 Examples queries:
 ```sh
   > pass <account> <password>
@@ -33,10 +28,17 @@ npm link
 > Use sudo at the beginning if you are getting permissions issues. Both ways will allow you to run the command anywhere.
 
 ## Set up (important)
+If you are using bash, your default set up will record every command you pass to the terminal and you certainly don't want that in this case. [Disable the recording](https://stackoverflow.com/questions/18663078/disable-history-in-linux).
 
+For your Master key:
+
+1. create .env file
+2. then edit it like so:
+```
+MASTER_KEY="whatever master key, preferably long, annoying to read and personal"
+```
 
 # Demo
-
 ![](http://g.recordit.co/.gif)
 
 ### Raison D'etre
