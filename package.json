@@ -1,7 +1,7 @@
 {
-  "name": "passitive",
+  "name": "passitive-cli",
   "version": "0.0.0",
-  "description": "This is the easiest/secure password management system (command line tool and desktop app).",
+  "description": "Custom password management system for personal use.",
   "main": "cli.js",
   "bin": {
     "pass": "cli.js"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BerniceChua/passitive.git"
+    "url": "git+https://github.com/mohamedhayibor/passitive-cli.git"
   },
   "keywords": [
     "password",
@@ -20,12 +20,12 @@
     "decryption",
     "clipboard"
   ],
-  "author": "BerniceChua && Mohamed <see readme for contacts>",
+  "author": "Mohamed <mohamedhayibor@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BerniceChua/passitive/issues"
+    "url": "https://github.com/mohamedhayibor/passitive-cli/issues"
   },
-  "homepage": "https://github.com/BerniceChua/passitive#readme",
+  "homepage": "https://github.com/mohamedhayibor/passitive-cli#readme",
   "dependencies": {
     "conf": "^0.11.2",
     "dotenv": "^2.0.0",
