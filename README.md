@@ -16,15 +16,15 @@ Examples queries:
 ```
 
 ## Installation
-To use the tool, you can either install it glabally:
-```sh
-> npm install -g passitive-cli
-```
 
-Or use (if you want to hack a little bit):
+Go to whatever directory you want to install it on.
+
 ```sh
-npm link
+> git clone https://github.com/mohamedhayibor/passitive-cli.git
+> npm link
 ```
+> npm link allows you run the command anywhere.
+
 > Use sudo at the beginning if you are getting permissions issues. Both ways will allow you to run the command anywhere.
 
 ## Set up (important)
@@ -37,6 +37,9 @@ For your Master key:
 ```
 MASTER_KEY="whatever master key, preferably long, annoying to read and personal"
 ```
+Feel free to hack it to your own needs.
+
+If your Master key is not loading properly, set up the .env [config param](https://github.com/motdotla/dotenv#path).
 
 # Demo
 ![](http://g.recordit.co/WUgip0vkkn.gif)
