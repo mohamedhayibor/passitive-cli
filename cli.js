@@ -8,7 +8,13 @@ const jsonfile = require('jsonfile');
 // The store is where our encrypted passwords are permanently stored (persistent).
 const store = new Conf();
 
-// loading the master key from .env file
+/* 
+ *  ATTENTION: loading the master key from .env file
+ *  At first try executing the command somewhere else will not work. Follow the guide:
+ *  https://github.com/motdotla/dotenv#path
+ *  To set up your env path properly.
+*/
+
 require('dotenv').config();
 
 let MASTER_KEY = process.env.MASTER_KEY;
@@ -107,7 +113,7 @@ if ( Object.keys(cli.flags).length > 0) {
   // logic for a json file
   // In this case we have exampleJson.json as demo file
   if ( cli.flags.j ) {
-    console.log('Processing the json file');
+    console.log('Processing the json file.');
     // at this point we'll suppose that the json is in the format
     // key: plain text password
     let passwordObject = jsonfile.readFileSync( filepath );
@@ -120,10 +126,10 @@ if ( Object.keys(cli.flags).length > 0) {
       console.log(acc, ': ', encryptedAcc );
     }
 
-    console.log('finished encrypting all passwords provided in json file');
+    console.log('Finished encrypting all passwords provided in json file.');
   }
 
-  // Extra functionalities
+  // Extra functionalities > delete, clear, path
   if ( cli.flags.d ) {
     let accountToDelete = input[0];
 
@@ -138,7 +144,7 @@ if ( Object.keys(cli.flags).length > 0) {
 
   // > using .clear() to delete all encrypted passwords since the beg. of time
   if ( cli.flags.c) {
-     console.log('Deleting all accounts and encrypted passwords');
+     console.log('Deleting all accounts and encrypted passwords.');
      store.clear();
   }
 

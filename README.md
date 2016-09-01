@@ -45,7 +45,7 @@ If your Master key is not loading properly, set up the .env [config param](https
 ![](http://g.recordit.co/WUgip0vkkn.gif)
 
 ### Raison D'etre
-Managing passwords is already super hard and still they are one of the best means when it comes to dealing with authentification. But there is a constant dilemma between `ease of use` and security. The advantage is that using a custom encryption/decryption is much more secure than using popular password mangament tools as they attract more attention. 
+Managing passwords is already super hard. But there is a constant dilemma between `ease of use` and security. The advantage is that using a custom encryption/decryption is much more secure than using popular password mangament tools as they attract more attention. 
 
 ## License
 MIT © [Mohamed Hayibor](http://github.com/mohamedhayibor)

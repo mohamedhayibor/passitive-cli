@@ -1,6 +1,6 @@
 {
   "name": "passitive-cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Custom password management system for personal use.",
   "main": "cli.js",
   "bin": {
