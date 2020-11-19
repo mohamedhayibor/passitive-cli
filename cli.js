@@ -8,40 +8,27 @@ const jsonfile = require('jsonfile');
 // The store is where our encrypted passwords are permanently stored (persistent).
 const store = new Conf();
 
-/* 
- *  ATTENTION: loading the master key from .env file
- *  At first try executing the command somewhere else will not work. Follow the guide:
- *  https://github.com/motdotla/dotenv#path
- *  To set up your env path properly.
-*/
+let envPath = `${__dirname}/.env`;
 
-require('dotenv').config();
+require('dotenv').config({ path: envPath});
 
 let MASTER_KEY = process.env.MASTER_KEY;
 
-/*********
- ^^^^^^ Set up your master key like so:
- ```
- export.
- env variables or any other method to obfuscate it.
-*/
-
-var encryptor = require('simple-encryptor')( MASTER_KEY );
+let encryptor = require('simple-encryptor')(MASTER_KEY);
 
 const cli = meow(`
   Usage:
-  To set password:
-    pass account password
+  To encrypt and save password:
+    > pass account password
 
-  To get password:
-    pass gmail
+  To decrypt and get password:
+    > pass gmail
   `, {
   alias: {
     'v': 'version',
     'h': 'help',
     'j': 'json',
     'd': 'delete',
-    'c': 'clear',
     'p': 'path'
   }
 });
@@ -65,7 +52,7 @@ if (input.length == 1 && Object.keys(cli.flags).length == 0) {
     toClipboard.sync( plainTextPassword );
 
     setTimeout( function() {
-      toClipboard.sync( 'Nothing to copy really - rubish' );
+      toClipboard.sync(`Nothing to copy really - rubish`);
     }, 8 * 1000);
 
    console.log(`Your password is already on your clipboard!`);
@@ -129,7 +116,7 @@ if ( Object.keys(cli.flags).length > 0) {
     console.log('Finished encrypting all passwords provided in json file.');
   }
 
-  // Extra functionalities > delete, clear, path
+  // delete an account password
   if ( cli.flags.d ) {
     let accountToDelete = input[0];
 
@@ -140,12 +127,6 @@ if ( Object.keys(cli.flags).length > 0) {
       console.log('There are no account with that name. Please double check the account.');
       process.exit(1);
     }
-  }
-
-  // > using .clear() to delete all encrypted passwords since the beg. of time
-  if ( cli.flags.c) {
-     console.log('Deleting all accounts and encrypted passwords.');
-     store.clear();
   }
 
   // > using .path to get file path (location) of the encrypted passwords
