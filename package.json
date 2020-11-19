@@ -1,6 +1,6 @@
 {
   "name": "passitive-cli",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Custom password management system for personal use.",
   "main": "cli.js",
   "bin": {
@@ -20,7 +20,7 @@
     "decryption",
     "clipboard"
   ],
-  "author": "Mohamed <mohamedhayibor@gmail.com>",
+  "author": "Mooo",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mohamedhayibor/passitive-cli/issues"
